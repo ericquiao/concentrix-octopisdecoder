@@ -57,9 +57,9 @@ function convertToArray(code) {
   return storage;
 }
 
-let arrayForm = convertToArray(
-  "386014951457 96323826917214471474 14453869381951531411 142738213169 94871486383222971446 1469145738537377 945738601495 1468316414486688  146914207310"
-);
+// let arrayForm = convertToArray(
+//   "386014951457 96323826917214471474 14453869381951531411 142738213169 94871486383222971446 1469145738537377 945738601495 1468316414486688  146914207310"
+// );
 
 //incorrect
 //441013691320
@@ -89,11 +89,7 @@ function splitHash(hash) {
   return container;
 }
 
-let scrambled = splitHash(arrayForm);
-//console.log(scrambled);
 
-let movement = getMovement(arrayForm);
-//console.log(movement)
 
 function getMovement(hash) {
   let arr = hash;
@@ -121,7 +117,7 @@ function getMovement(hash) {
   return container;
 }
 
-arrangeLetters(scrambled, movement);
+
 
 function arrangeLetters(letters, movement) {
   const letterArr = letters;
@@ -265,4 +261,19 @@ function arrangeLetters(letters, movement) {
 
 
 
+const submitButton = document.getElementById('submitButton')
+submitButton.addEventListener('click',submitHash)
 
+function submitHash(){
+  const textArea = document.getElementById('textArea').value
+  console.log(textArea)
+  let arrayForm = convertToArray(textArea)
+
+  let scrambled = splitHash(arrayForm);
+//console.log(scrambled);
+
+let movement = getMovement(arrayForm);
+//console.log(movement)
+
+arrangeLetters(scrambled, movement);
+}
