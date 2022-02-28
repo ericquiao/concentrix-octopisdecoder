@@ -89,8 +89,6 @@ function splitHash(hash) {
   return container;
 }
 
-
-
 function getMovement(hash) {
   let arr = hash;
   for (const [index, element] of arr.entries()) {
@@ -116,8 +114,6 @@ function getMovement(hash) {
   }
   return container;
 }
-
-
 
 function arrangeLetters(letters, movement) {
   const letterArr = letters;
@@ -146,14 +142,12 @@ function arrangeLetters(letters, movement) {
     let arrModify17;
     let arrModify19;
     for (let j = 0; j < letterArr[i].length; j++) {
-      
-
       let modify = letterArr[i];
       arrModify = modify.split("");
 
       if (splitMove[j] === "correct") {
-        if(i==0){
-          arrModify10 = arrModify.join('')
+        if (i == 0) {
+          arrModify10 = arrModify.join("");
         }
       }
 
@@ -169,19 +163,27 @@ function arrangeLetters(letters, movement) {
           arrModify6 = arrModify;
           removedLetter6 = arrModify6.splice(j, 1);
           arrModify6.splice(j + 2, 0, removedLetter6[0]);
-          arrModify16 = arrModify6.join('')
-         
+          arrModify16 = arrModify6.join("");
         }
 
-        if(i==1){
-        removedLetter = arrModify1.splice(j, 1);
-        arrModify1.splice(j + 2, 0, removedLetter[0]);
-        arrModify11 = arrModify1.join('')
-      }
+        if (i == 1) {
+          removedLetter = arrModify1.splice(j, 1);
+          arrModify1.splice(j + 2, 0, removedLetter[0]);
+          arrModify11 = arrModify1.join("");
+        }
 
-      if(i==4){
-        arrModify4 = arrModify1.join();
-      }
+        if (i == 4) {
+          arrModify4 = arrModify;
+
+          removedLetter = arrModify4.splice(j, 1);
+
+          arrModify4.splice(j + 2, 0, removedLetter[0]);
+
+          removedLetter2 = arrModify4.splice(3, 1);
+
+          arrModify4.splice(j + 5, 0, removedLetter2[0]);
+          arrModify14 = arrModify4.join("");
+        }
       }
 
       if (splitMove[j] === "back1") {
@@ -190,15 +192,14 @@ function arrangeLetters(letters, movement) {
 
         arrModify3.splice(j - 1, 0, removedLetter[0]);
 
-      if(i==3){
-        arrModify13=(arrModify3.join(''))
-      }
+        if (i == 3) {
+          arrModify13 = arrModify3.join("");
+        }
         if (i == 7 && j == 1) {
           arrModify7 = arrModify3;
           removedLetter7 = arrModify7.splice(3, 1);
           arrModify7.splice(2, 0, removedLetter7[0]);
-          arrModify17 = arrModify7.join('')
-          
+          arrModify17 = arrModify7.join("");
         }
       }
 
@@ -209,19 +210,17 @@ function arrangeLetters(letters, movement) {
         arrModify.splice(j - 2, 0, removedLetter[0]);
         arrModify2 = arrModify;
 
-        
-        arrModify5 = arrModify2.join('');
-      
-        if(i==2){
-          arrModify12=(arrModify2.join(''))  
+        arrModify5 = arrModify2.join("");
+
+        if (i == 2) {
+          arrModify12 = arrModify2.join("");
         }
-        
 
         if (i == 9) {
           arrModify9 = modify.split("");
           removedLetter9 = arrModify9.splice(j, 1);
           arrModify9.splice(j - 2, 0, removedLetter9[0]);
-          arrModify19 = arrModify9.join('')
+          arrModify19 = arrModify9.join("");
         }
       }
 
@@ -232,14 +231,13 @@ function arrangeLetters(letters, movement) {
         document.getElementById("hash1").innerHTML = arrModify11;
       }
       if (i == 2) {
-      
         document.getElementById("hash2").innerHTML = arrModify12;
       }
       if (i == 3) {
         document.getElementById("hash3").innerHTML = arrModify13;
       }
-      if (i == 6) {
-        document.getElementById("hash4").innerHTML = arrModify4;
+      if (i == 4) {
+        document.getElementById("hash4").innerHTML = arrModify14;
       }
       if (i == 5) {
         document.getElementById("hash5").innerHTML = arrModify5;
@@ -257,23 +255,19 @@ function arrangeLetters(letters, movement) {
   }
 }
 
+const submitButton = document.getElementById("submitButton");
+submitButton.addEventListener("click", submitHash);
 
+function submitHash() {
+  const textArea = document.getElementById("textArea").value;
 
-
-
-const submitButton = document.getElementById('submitButton')
-submitButton.addEventListener('click',submitHash)
-
-function submitHash(){
-  const textArea = document.getElementById('textArea').value
-  console.log(textArea)
-  let arrayForm = convertToArray(textArea)
+  let arrayForm = convertToArray(textArea);
 
   let scrambled = splitHash(arrayForm);
-//console.log(scrambled);
+  //console.log(scrambled);
 
-let movement = getMovement(arrayForm);
-//console.log(movement)
+  let movement = getMovement(arrayForm);
+  //console.log(movement)
 
-arrangeLetters(scrambled, movement);
+  arrangeLetters(scrambled, movement);
 }
