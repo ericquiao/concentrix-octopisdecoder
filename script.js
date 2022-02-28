@@ -58,7 +58,7 @@ function convertToArray(code) {
 }
 
 // let arrayForm = convertToArray(
-//   "386014951457 96323826917214471474 14453869381951531411 142738213169 94871486383222971446 1469145738537377 945738601495 1468316414486688  146914207310"
+//   "386014951457 96323826917214471474 14453869381951531411 142738213169 94871486383222971446 1469145738537377 945738601495 1468316414486688 146914207310"
 // );
 
 //incorrect
@@ -133,14 +133,19 @@ function arrangeLetters(letters, movement) {
     let arrModify4;
     let arrModify6;
     let arrModify7;
-    let arrModify9;
+  
     let arrModify10;
     let arrModify11;
     let arrModify12;
     let arrModify13;
+    let arrModify15;
     let arrModify16;
     let arrModify17;
-    let arrModify19;
+    let arrModify18;
+
+
+    try{
+
     for (let j = 0; j < letterArr[i].length; j++) {
       let modify = letterArr[i];
       arrModify = modify.split("");
@@ -210,17 +215,18 @@ function arrangeLetters(letters, movement) {
         arrModify.splice(j - 2, 0, removedLetter[0]);
         arrModify2 = arrModify;
 
-        arrModify5 = arrModify2.join("");
+        arrModify15 = arrModify2.join("");
 
         if (i == 2) {
           arrModify12 = arrModify2.join("");
         }
-
-        if (i == 9) {
-          arrModify9 = modify.split("");
-          removedLetter9 = arrModify9.splice(j, 1);
-          arrModify9.splice(j - 2, 0, removedLetter9[0]);
-          arrModify19 = arrModify9.join("");
+        console.log(i)
+        if (i == 8) {
+          arrModify8 = modify.split("");
+      
+          removedLetter8 = arrModify8.splice(j, 1);
+          arrModify8.splice(j - 2, 0, removedLetter8[0]);
+          arrModify18 = arrModify8.join("");
         }
       }
 
@@ -240,7 +246,7 @@ function arrangeLetters(letters, movement) {
         document.getElementById("hash4").innerHTML = arrModify14;
       }
       if (i == 5) {
-        document.getElementById("hash5").innerHTML = arrModify5;
+        document.getElementById("hash5").innerHTML = arrModify15;
       }
       if (i == 6) {
         document.getElementById("hash6").innerHTML = arrModify16;
@@ -248,10 +254,15 @@ function arrangeLetters(letters, movement) {
       if (i == 7) {
         document.getElementById("hash7").innerHTML = arrModify17;
       }
-      if (i == 9) {
-        document.getElementById("hash8").innerHTML = arrModify19;
+      if (i == 8) {
+        document.getElementById("hash8").innerHTML = arrModify18;
       }
     }
+
+  }catch(e){
+    console.error(e.name)
+   
+  }
   }
 }
 
